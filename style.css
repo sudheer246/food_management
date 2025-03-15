@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Management Dashboard & Contact Us</title>
+    <!-- Link to the CSS File -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>AI-Driven Food Management</h1>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                    <a href="#">Home ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.justdial.com/Srikakulam/Restaurants/nct-10408936">Restaurants</a></li>
+                        <li><a href="https://www.justdial.com/Srikakulam/Orphanages/nct-10344906">Orphanages</a></li>
+                        <li><a href="https://www.justdial.com/Srikakulam/Dairy-Farms/nct-10615027">Dairy Farms</a></li>
+                        <li><a href="https://www.justdial.com/Srikakulam/Fertilizer-Manufacturers/nct-10203301">Fertilizer Industries</a></li>
+                    </ul>
+                </li>
+                <li><a href="sudheer9490473246@gmail.com">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Food Management Form -->
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="foodImage">Upload Food Image:</label>
+            <input type="file" name="foodImage" accept="image/*" required>
+
+            <label for="foodTime">Food Preparation Time (DD/MM/YYYY HH:MM:SS):</label>
+            <input type="datetime-local" name="foodTime" required>
+
+            <label for="foodQuantity">Enter Food Quantity (kg):</label>
+            <input type="number" name="foodQuantity" min="0.1" step="0.1" placeholder="Enter in kg" required>
+
+            <button type="submit">Classify Food</button>
+        </form>
+
+        {% if result %}
+            <h2>Classification Result: {{ result }}</h2>
+        {% endif %}
+
+        <!-- Contact Us Information -->
+        <h2>Contact Us</h2>
+        <p><strong>Phone:</strong> +91 9876543210</p>
+        <p><strong>Email:</strong> contact@foodmanagement.com</p>
+    </div>
+
+    <footer>
+        <p><strong>Contact Us:</strong> +91 6305913232 | Email: teamaura@foodmanagement.ac.in</p>
+        <p><strong>Address:</strong> Vijayawada,AndhraPradesh,520007,India</p>
+        <p>&copy; 2025 AI-Driven Food Management. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
